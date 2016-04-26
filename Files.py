@@ -61,6 +61,13 @@ for dirname, dirnames, filenames in os.walk('.\data'):
 	for filename in filenames:
 		if filename[0] == '.':
 			continue
+
+		filepath = os.path.join(dirname, filename)
+		if os.path.getsize(filepath) == 0:
+			print("Skipping 0-byte file " + filepath)
+			continue
+
+
 		"""
 		if artist_count > 0:
 			break
@@ -85,7 +92,6 @@ for dirname, dirnames, filenames in os.walk('.\data'):
 		
 		
 		#print("Path:", os.path.join(dirname, filename))
-		filepath = os.path.join(dirname, filename)
 		#print(filepath)
 		#print("dirname:", dirname)
 		#print("filename:", filename)
@@ -120,18 +126,34 @@ for dirname, dirnames, filenames in os.walk('.\data'):
 				song['key' + str(i + 1)] = key
 				song['frequency' + str(i + 1)] = nouns[key]
 				if key not in all_keywords:
-					all_keywords[key] = blob.sentiment.polarity
+					all_keywords[key] = [0 for i in range(2)]
+					all_keywords[key][0] = blob.sentiment.polarity
 					keyword_count[key] = 1
 				else:
 					keyword_count[key] += 1
-					all_keywords[key] = (all_keywords[key]*(keyword_count[key] - 1) + blob.sentiment.polarity)/keyword_count[key]
+					all_keywords[key][0] = (all_keywords[key][0]*(keyword_count[key] - 1) + blob.sentiment.polarity)/keyword_count[key]
 			song['sentiment'] = blob.sentiment.polarity
 			if 'key1' in song and 'key2' in song and 'key3' in song:
 				song['keywords_appended'] = song['key1'] + ' ' + song['key2'] + ' ' + song['key3']
 			songs.append(song)
-			pprint.PrettyPrinter(depth=6).pprint(song);
+			# pprint.PrettyPrinter(depth=6).pprint(song);
+
+
 
 # In[10]:
+# Include the count of songs that mention the keyword
+for key in keyword_count:
+	all_keywords[key][1] = keyword_count[key]
+
+# Remove all keywords that are only mentioned once
+print("Number of keywords:" + str(len(all_keywords)))
+for key in keyword_count:
+	if keyword_count[key] == 1:
+		del(all_keywords[key])
+
+print("Number of keywords with >1 song:" + str(len(all_keywords)))
+# pprint.PrettyPrinter(depth=6).pprint(keyword_count);
+
 
 with open('songs', 'w') as file_name:
 	json.dump(songs, file_name, indent=4)

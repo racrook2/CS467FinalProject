@@ -2523,6 +2523,18 @@
         "frequency3": 6
     }, 
     {
+        "name": "___Flawless", 
+        "sentiment": 0.37069199457259155, 
+        "artist": "Beyonce", 
+        "key3": "town", 
+        "key2": "bitches", 
+        "key1": "god", 
+        "keywords_appended": "god bitches town", 
+        "frequency1": 9, 
+        "frequency2": 8, 
+        "frequency3": 8
+    }, 
+    {
         "name": "Big Nut Bust", 
         "sentiment": 0.023599439775910336, 
         "artist": "Big Sean", 
@@ -13781,6 +13793,18 @@
         "frequency1": 6, 
         "frequency2": 4, 
         "frequency3": 3
+    }, 
+    {
+        "name": "Big Fat B____", 
+        "sentiment": -0.020722222222222225, 
+        "artist": "Zac Brown Band", 
+        "key3": "fat", 
+        "key2": "bitch", 
+        "key1": "ol", 
+        "keywords_appended": "ol bitch fat", 
+        "frequency1": 12, 
+        "frequency2": 9, 
+        "frequency3": 6
     }, 
     {
         "name": "Bittersweet", 
