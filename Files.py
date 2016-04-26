@@ -49,6 +49,8 @@ def list_files(dir):
 artist_count = 0;
 song_count = 0;
 songs = []
+all_keywords = {}
+keyword_count = {}
 
 for dirname, dirnames, filenames in os.walk('.\data'):
 	# print path to all subdirectories first.
@@ -113,14 +115,19 @@ for dirname, dirnames, filenames in os.walk('.\data'):
 						nouns[noun] = 1
 					else:
 						nouns[noun] += 1
-			keywords = {}
 			top3 = sorted(nouns, key=lambda key: nouns[key], reverse=True)[:3]
 			for i, key in enumerate(top3):
-				#keywords[key] = nouns[key]
-				keywords['key' + str(i + 1)] = key
-				keywords['frequency' + str(i + 1)] = nouns[key]
-			song['keywords'] = keywords
+				song['key' + str(i + 1)] = key
+				song['frequency' + str(i + 1)] = nouns[key]
+				if key not in all_keywords:
+					all_keywords[key] = blob.sentiment.polarity
+					keyword_count[key] = 1
+				else:
+					keyword_count[key] += 1
+					all_keywords[key] = (all_keywords[key]*(keyword_count[key] - 1) + blob.sentiment.polarity)/keyword_count[key]
 			song['sentiment'] = blob.sentiment.polarity
+			if 'key1' in song and 'key2' in song and 'key3' in song:
+				song['keywords_appended'] = song['key1'] + ' ' + song['key2'] + ' ' + song['key3']
 			songs.append(song)
 			pprint.PrettyPrinter(depth=6).pprint(song);
 
@@ -129,6 +136,8 @@ for dirname, dirnames, filenames in os.walk('.\data'):
 with open('songs', 'w') as file_name:
 	json.dump(songs, file_name, indent=4)
 
+with open('keywords', 'w') as file_name:
+	json.dump(all_keywords, file_name, indent=4)
 
 # In[ ]:
 
