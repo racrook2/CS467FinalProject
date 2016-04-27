@@ -117,6 +117,10 @@ for dirname, dirnames, filenames in os.walk('.\data'):
 			for tag in tags:
 				if tag[1][0] == 'N':
 					noun = tag[0].encode('utf-8').strip().lower()
+
+					if noun == "[" or noun == "]":
+						continue
+
 					if noun not in nouns:
 						nouns[noun] = 1
 					else:
@@ -162,7 +166,6 @@ with open('keywords', 'w') as file_name:
 	json.dump(all_keywords, file_name, indent=4)
 
 # In[ ]:
-
 
 
 
