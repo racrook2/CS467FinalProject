@@ -1,0 +1,86 @@
+body {
+	background-color: $black;
+	color: white;
+}
+
+#keywordBar {
+	background-color: black;
+}
+
+#keywordBar ul {
+	list-style-type: none;
+}
+
+#keywordBar li {
+	display: inline-block;
+	width: 6%;
+	cursor: pointer;
+}
+
+#legend {
+	padding-right: 45px;
+	float: right;
+}
+
+#legend span {
+	background: red;
+	background: -webkit-linear-gradient(left, lime, yellow, red);
+	background: -o-linear-gradient(right, lime, yellow, red);
+	background: -moz-linear-gradient(right, lime, yellow, red);
+	background: linear-gradient(to right, lime, yellow, red);
+}
+
+#searchBars {
+	padding-bottom: 20px;
+}
+
+#searchBars div {
+	display: inline-block;
+	margin: 0px 20px 0px 20px;
+}
+
+#searchArtist, #searchName, #searchKeyword {
+	color: black;
+}
+
+#taskSort {
+	width: 20%;
+	margin-left: 40%;
+}
+
+#songList ul {
+	padding-left: 10%;
+	padding-right: 10%;
+	list-style-type: none;
+}
+
+#songList li {
+	color: $black;
+	padding: 5px;
+	margin-bottom: 5px;
+	background-color: $gray;
+	width: 200px;
+	height: 200px;
+	display: inline-block;
+	margin: 5px;
+	border-radius: 100px;
+	text-align: center;
+}
+
+#songList li > span {
+	display: block;
+	padding-top: 75px;
+}
+
+#songList li p {
+	display: none;
+	position: absolute;
+	background-color: black;
+	width: 190px;
+	border-radius: 6px;
+	padding: 5px 0px 5px 0px;
+}
+
+#songList li:hover p {
+	display: block;
+}
