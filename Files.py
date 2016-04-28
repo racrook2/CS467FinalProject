@@ -160,7 +160,7 @@ print("Number of keywords with >1 song:" + str(len(all_keywords)))
 
 
 with open('songs', 'w') as file_name:
-	json.dump(songs, file_name, indent=4)
+	json.dump(songs, file_name, indent=4, ensure_ascii=False)
 
 with open('keywords', 'w') as file_name:
 	json.dump(all_keywords, file_name, indent=4)
