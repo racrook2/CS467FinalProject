@@ -45,7 +45,15 @@
 			</li>
 		</ul>
 	</div>
-
+	
+	<div ng-controller="MainCtrl">
+		<ul id="letterBar">
+			<li ng-repeat="letter in alphabet">
+				<a ng-click="scrollTo(letter)">{{letter}}</a>
+			</li>
+		</ul>
+	</div>
+	
 	<div id="searchBars" align="center">
 		<div>Search by artist:<br/><input id="searchArtist" ng-model="query.artist"></div>
 		<div>Search by song name:<br/><input id="searchName" ng-model="query.name"></div>
@@ -64,25 +72,35 @@
 		<input type="radio" ng-model="sort2" value="-">Descending
 	</div>
 
-	<div ng-controller="MainCtrl" id="songList">	
-		<ul>
-			<li ng-repeat="song in songs | filter:query | orderBy:sort2+sort1"
-				ng-click="viewDetails(song.rank)"
-				style="background-color: rgb({{getColor2(findValue2(song.name))}})">
-				<p>
-					<input name="keyword" type="radio" ng-model="query.keywords_appended" value="{{song.key1}}"/>
-					<span style="color: rgb({{getColor(findValue(song.key1))}})">{{song.key1}}</span><br/>
-					<input name="keyword" type="radio" ng-model="query.keywords_appended" value="{{song.key2}}"/>
-					<span style="color: rgb({{getColor(findValue(song.key2))}})">{{song.key2}}</span><br/>
-					<input name="keyword" type="radio" ng-model="query.keywords_appended" value="{{song.key3}}"/>
-					<span style="color: rgb({{getColor(findValue(song.key3))}})">{{song.key3}}</span>
-				</p>
-				<span>
-					{{song.name}}<br/>
-					<div style="font-size: 60%">
-						{{song.artist}}
-					</div>
-				</span>
+	<div ng-controller="MainCtrl">
+		<ul id="letterList">
+			<li ng-repeat="letter in alphabet">
+				<h1 id="{{letter}}">
+					{{letter}}
+					<a ng-click="scrollTo('legend')">Top&#x25b2;</a>
+				</h1>
+				
+				<ul id="songList">
+					<li ng-repeat="song in songs | filter:query | orderBy:sort2+sort1"
+						ng-click="viewDetails(song.rank)"
+						ng-if="song.name[0] == letter"
+						style="background-color: rgb({{getColor2(findValue2(song.name))}})">
+						<p>
+							<input name="keyword" type="radio" ng-model="query.keywords_appended" value="{{song.key1}}"/>
+							<span style="color: rgb({{getColor(findValue(song.key1))}})">{{song.key1}}</span><br/>
+							<input name="keyword" type="radio" ng-model="query.keywords_appended" value="{{song.key2}}"/>
+							<span style="color: rgb({{getColor(findValue(song.key2))}})">{{song.key2}}</span><br/>
+							<input name="keyword" type="radio" ng-model="query.keywords_appended" value="{{song.key3}}"/>
+							<span style="color: rgb({{getColor(findValue(song.key3))}})">{{song.key3}}</span>
+						</p>
+						<span>
+							{{song.name}}<br/>
+							<div style="font-size: 60%">
+								{{song.artist}}
+							</div>
+						</span>
+					</li>
+				</ul>
 			</li>
 		</ul>
 	</div>

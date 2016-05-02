@@ -4193,30 +4193,66 @@ body {
   background: linear-gradient(to right, #00ff00, #ffff00, #ff0000); }
 
 /* line 33, ../../source_sass/_base.scss */
+ul {
+  list-style-type: none; }
+
+/* line 37, ../../source_sass/_base.scss */
+#letterBar {
+  background-color: #454545;
+  padding: 0;
+  margin: 0;
+  text-align: center; }
+
+/* line 44, ../../source_sass/_base.scss */
+#letterBar li {
+  display: inline-block;
+  width: 2.5%; }
+
+/* line 49, ../../source_sass/_base.scss */
+#letterBar a {
+  color: white; }
+
+/* line 53, ../../source_sass/_base.scss */
 #searchBars {
   padding-bottom: 20px; }
 
-/* line 37, ../../source_sass/_base.scss */
+/* line 57, ../../source_sass/_base.scss */
 #searchBars div {
   display: inline-block;
   margin: 0px 20px 0px 20px; }
 
-/* line 42, ../../source_sass/_base.scss */
+/* line 62, ../../source_sass/_base.scss */
 #searchArtist, #searchName, #searchKeyword {
   color: black; }
 
-/* line 46, ../../source_sass/_base.scss */
+/* line 66, ../../source_sass/_base.scss */
 #taskSort {
   width: 20%;
   margin-left: 40%; }
 
-/* line 51, ../../source_sass/_base.scss */
-#songList ul {
-  padding-left: 10%;
-  padding-right: 10%;
-  list-style-type: none; }
+/* line 71, ../../source_sass/_base.scss */
+#letterList {
+  padding: 0;
+  margin: 0; }
 
-/* line 57, ../../source_sass/_base.scss */
+/* line 76, ../../source_sass/_base.scss */
+h1 {
+  padding: 10px 5% 10px 5%;
+  background-color: #454545;
+  font-size: 200%; }
+
+/* line 82, ../../source_sass/_base.scss */
+h1 a {
+  color: white;
+  float: right;
+  font-size: 40%; }
+
+/* line 88, ../../source_sass/_base.scss */
+#songList {
+  padding-left: 10%;
+  padding-right: 10%; }
+
+/* line 93, ../../source_sass/_base.scss */
 #songList li {
   color: #1f1f1f;
   padding: 5px;
@@ -4229,12 +4265,12 @@ body {
   border-radius: 100px;
   text-align: center; }
 
-/* line 70, ../../source_sass/_base.scss */
+/* line 106, ../../source_sass/_base.scss */
 #songList li > span {
   display: block;
   padding-top: 75px; }
 
-/* line 75, ../../source_sass/_base.scss */
+/* line 111, ../../source_sass/_base.scss */
 #songList li p {
   display: none;
   position: absolute;
@@ -4243,7 +4279,7 @@ body {
   border-radius: 6px;
   padding: 5px 0px 5px 0px; }
 
-/* line 84, ../../source_sass/_base.scss */
+/* line 120, ../../source_sass/_base.scss */
 #songList li:hover p {
   display: block; }
 

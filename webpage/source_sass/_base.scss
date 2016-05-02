@@ -30,6 +30,26 @@ body {
 	background: linear-gradient(to right, lime, yellow, red);
 }
 
+ul {
+	list-style-type: none;
+}
+
+#letterBar {
+	background-color: $gray;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+
+#letterBar li {
+	display: inline-block;
+	width: 2.5%;
+}
+
+#letterBar a {
+	color: white;
+}
+
 #searchBars {
 	padding-bottom: 20px;
 }
@@ -48,10 +68,26 @@ body {
 	margin-left: 40%;
 }
 
-#songList ul {
+#letterList {
+	padding: 0;
+	margin: 0;
+}
+
+h1 {
+	padding: 10px 5% 10px 5%;
+	background-color: $gray;
+	font-size: 200%;
+}
+
+h1 a {
+	color: white;
+	float: right;
+	font-size: 40%;
+}
+
+#songList {
 	padding-left: 10%;
 	padding-right: 10%;
-	list-style-type: none;
 }
 
 #songList li {

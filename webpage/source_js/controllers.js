@@ -1,6 +1,10 @@
 var mp3Controllers = angular.module('cs467Controllers', []).
-controller('MainCtrl', ['$scope', '$http', '$location', '$rootScope',
-	function($scope, $http, $location, $rootScope) {
+controller('MainCtrl', ['$scope', '$http', '$location', '$anchorScroll',
+	function($scope, $http, $location, $anchorScroll) {
+		$scope.alphabet = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B',
+						   'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+						   'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+		
 		$http.get('./data/songs').success(function(data) {
 			$scope.songs = data;
 			$scope.songs_sorted = [];
@@ -43,18 +47,24 @@ controller('MainCtrl', ['$scope', '$http', '$location', '$rootScope',
 			return "" + green + ", " + red + ", 0";
 		};
 		
-		$scope.findValue = function(nameWeAreLookingFor) {
-			for(var i = 0; i<$scope.keywords.length; i++) {
-				if($scope.keywords[i][0] == nameWeAreLookingFor) return i;
+		$scope.findValue = function(keyword) {
+			for (var i = 0; i < $scope.keywords.length; i++) {
+				if ($scope.keywords[i][0] == keyword) return i;
 			}
 			return -1;
 		};
 		
-		$scope.findValue2 = function(nameWeAreLookingFor) {
-			for(var i = 0; i<$scope.songs_sorted.length; i++) {
-				if($scope.songs_sorted[i][0] == nameWeAreLookingFor) return i;
+		$scope.findValue2 = function(song) {
+			for (var i = 0; i < $scope.songs_sorted.length; i++) {
+				if ($scope.songs_sorted[i][0] == song) return i;
 			}
 			return -1;
+		};
+		
+		$scope.scrollTo = function(id) {
+			$location.hash(id);
+			console.log($location.hash());
+			$anchorScroll();
 		};
 	}
 ]);
