@@ -84,8 +84,8 @@
 					<li ng-repeat="song in songs | filter:query | orderBy:sort2+sort1"
 						ng-click="viewDetails(song.rank)"
 						ng-if="song.name[0] == letter"
-						style="background-color: rgb({{getColor2(findValue2(song.name))}})">
-						<p>
+ 						style="background-color: rgb({{getColor2(findValue3(song.name, song.artist))}})">
+ 						<p>
 							<input name="keyword" type="radio" ng-model="query.keywords_appended" value="{{song.key1}}"/>
 							<span style="color: rgb({{getColor(findValue(song.key1))}})">{{song.key1}}</span><br/>
 							<input name="keyword" type="radio" ng-model="query.keywords_appended" value="{{song.key2}}"/>
